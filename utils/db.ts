@@ -1,5 +1,9 @@
-
+// Eliminar todos los materiales
 import { openDatabaseSync, SQLiteDatabase } from 'expo-sqlite';
+
+export async function deleteAllMateriales() {
+  await db.execAsync('DELETE FROM materiales');
+}
 
 const db: SQLiteDatabase = openDatabaseSync('caturn.db');
 
