@@ -1,4 +1,5 @@
 import { ThemedText } from '@/components/themed-text';
+import { useLanguage } from '@/context/LanguageContext';
 import { getAllMateriales } from '@/utils/db';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
@@ -6,12 +7,13 @@ import { Button, ScrollView, StyleSheet, View } from 'react-native';
 
 export default function MaterialDetailScreen() {
   const { id } = useLocalSearchParams();
+  const { lang } = useLanguage();
   const router = useRouter();
   const [material, setMaterial] = useState<any>(null);
 
   useEffect(() => {
     async function fetchMaterial() {
-      const materiales = await getAllMateriales();
+      const materiales = await getAllMateriales(lang);
       const found = materiales.find((m: any) => String(m.id) === String(id));
       setMaterial(found);
     }

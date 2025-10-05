@@ -1,11 +1,13 @@
 import { ThemedText } from '@/components/themed-text';
+import { CONTINUAR_EN, CONTINUAR_ES, TEXTO_SIMULADO_EN, TEXTO_SIMULADO_ES, VOLVER_EN, VOLVER_ES } from '@/constants/texto';
+import { useLanguage } from '@/context/LanguageContext';
 import { useFocusEffect, useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import { Button, ScrollView, StyleSheet, View } from 'react-native';
 
-const TEXTO_SIMULADO = `Este es un texto de ejemplo para la simulación de escritura. Puedes reemplazarlo por el texto que desees más adelante. El texto se mostrará como si estuviera siendo escrito en tiempo real, y al finalizar aparecerá un botón para continuar.`;
-
 export default function SimulacionScreen() {
+  const { lang } = useLanguage();
+  const TEXTO_SIMULADO = lang === 'es' ? TEXTO_SIMULADO_ES : TEXTO_SIMULADO_EN;
   const [displayed, setDisplayed] = useState('');
   const [done, setDone] = useState(false);
   const router = useRouter();
@@ -20,6 +22,10 @@ export default function SimulacionScreen() {
   );
 
   useEffect(() => {
+    setDone(false);
+  }, []);
+
+  useEffect(() => {
     if (displayed.length < TEXTO_SIMULADO.length) {
       const timeout = setTimeout(() => {
         setDisplayed(TEXTO_SIMULADO.slice(0, displayed.length + 1));
@@ -28,17 +34,17 @@ export default function SimulacionScreen() {
     } else if (displayed.length === TEXTO_SIMULADO.length) {
       setDone(true);
     }
-  }, [displayed]);
+  }, [displayed, TEXTO_SIMULADO]);
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <View style={{ alignItems: 'flex-start', marginBottom: 24 }}>
-        <Button title="Volver" onPress={() => router.back()} />
+    <ScrollView contentContainerStyle={{ ...styles.container, justifyContent: 'flex-start' }}>
+      <View style={{ alignItems: 'flex-start', marginBottom: 20, marginTop: 20 }}>
+        <Button title={lang === 'es' ? VOLVER_ES : VOLVER_EN} onPress={() => router.back()} />
       </View>
-      <ThemedText style={styles.text}>{displayed}</ThemedText>
+      <ThemedText style={[styles.text, { textAlign: 'justify' }]}>{displayed}</ThemedText>
       {done && (
         <View style={{ marginTop: 32 }}>
-          <Button title="Continuar" onPress={() => router.back()} />
+          <Button title={lang === 'es' ? CONTINUAR_ES : CONTINUAR_EN} onPress={() => router.back()} />
         </View>
       )}
     </ScrollView>
