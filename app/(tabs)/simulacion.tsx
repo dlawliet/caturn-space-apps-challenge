@@ -38,13 +38,17 @@ export default function SimulacionScreen() {
 
   return (
     <ScrollView contentContainerStyle={{ ...styles.container, justifyContent: 'flex-start' }}>
-      <View style={{ alignItems: 'flex-start', marginBottom: 20, marginTop: 20 }}>
-        <Button title={lang === 'es' ? VOLVER_ES : VOLVER_EN} onPress={() => router.back()} />
+      <View style={{ alignItems: 'flex-start', marginBottom: 10, marginTop: 40, padding: 0, marginLeft: -9 }}>
+        <Button
+          title={lang === 'es' ? VOLVER_ES : VOLVER_EN}
+          onPress={() => router.back()}
+          color="#ffca6dff"
+        />
       </View>
       <ThemedText style={[styles.text, { textAlign: 'justify' }]}>{displayed}</ThemedText>
       {done && (
         <View style={{ marginTop: 32 }}>
-          <Button title={lang === 'es' ? CONTINUAR_ES : CONTINUAR_EN} onPress={() => router.back()} />
+          <Button title={lang === 'es' ? CONTINUAR_ES : CONTINUAR_EN} onPress={() => router.back()} color="#ffca6dff" />
         </View>
       )}
     </ScrollView>
