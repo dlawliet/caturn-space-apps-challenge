@@ -26,10 +26,11 @@ export default function SimulacionScreen() {
   }, []);
 
   useEffect(() => {
+    setDone(false);
     if (displayed.length < TEXTO_SIMULADO.length) {
       const timeout = setTimeout(() => {
         setDisplayed(TEXTO_SIMULADO.slice(0, displayed.length + 1));
-      }, 25);
+      }, 0.05);
       return () => clearTimeout(timeout);
     } else if (displayed.length === TEXTO_SIMULADO.length) {
       setDone(true);

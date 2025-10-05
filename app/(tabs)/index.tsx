@@ -91,7 +91,7 @@ export default function HomeScreen() {
         </ThemedView>
         <Label
           style={{
-            color: '#ac9130ff',
+            color: '#eed98eff',
             textAlign: 'justify',
             flexWrap: 'wrap',
             lineHeight: 20,
@@ -121,8 +121,8 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
-    marginBottom: 10
+    marginTop: 10,
+    marginBottom: 5
   },
   stepContainer: {
     gap: 8,
