@@ -5,7 +5,8 @@ import { getAllMateriales } from '@/utils/db';
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
-import { Button, Pressable, RefreshControl, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { Button, Pressable, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   const router = useRouter();
