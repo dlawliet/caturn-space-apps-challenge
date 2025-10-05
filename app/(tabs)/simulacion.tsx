@@ -3,7 +3,7 @@ import { PASOS_SIMULACION, VOLVER_EN, VOLVER_ES } from '@/constants/texto';
 import { useLanguage } from '@/context/LanguageContext';
 import { useFocusEffect, useRouter } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
-import { Button, ScrollView, StyleSheet, View } from 'react-native';
+import { Button, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 
 
@@ -112,14 +112,28 @@ export default function SimulacionScreen() {
           if (!waitingButton) return null;
           return (
             <View key={i} style={{ marginTop: 15 }}>
-              <Button
-                title={step[lang]}
+              <Pressable
                 onPress={() => {
                   setWaitingButton(false);
                   setCurrentIdx((idx) => idx + 1);
                 }}
-                color="#ffca6dff"
-              />
+                style={({ pressed }) => [
+                  {
+                    borderWidth: 1,
+                    borderColor: '#caffc6ff',
+                    borderRadius: 6,
+                    overflow: 'hidden',
+                    backgroundColor: pressed ? '#ffe2a6' : '#ffca6dff',
+                    paddingVertical: 10,
+                    paddingHorizontal: 16,
+                    alignItems: 'center',
+                  },
+                ]}
+              >
+                <ThemedText style={{ color: '#333', fontWeight: 'bold', fontSize: 16 }}>
+                  {step[lang]}
+                </ThemedText>
+              </Pressable>
             </View>
           );
         }

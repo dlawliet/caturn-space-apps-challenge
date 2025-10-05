@@ -118,27 +118,51 @@ Component    Base material    Mixture / composition    Mass used (kg)    Volume 
     escrito: false,
     color: COLOR_LABEL_ANSWER,
     es: `1. Arco de entrada:
-    - Aluminio estructural (> 90 %) 100 % aluminio 15 kg 0.015 m³
-    - Tubos soldados o atornillados; reutilizable Overwrap (PE + PET + Al) 50 % Al foil + 50 % polietileno 2 kg 0.02 m³
-    - Envoltura reflectiva del arco`,
+- Aluminio estructural (> 90 %) 100 % aluminio 15 kg 0.015 m³
+- Tubos soldados o atornillados; reutilizable Overwrap (PE + PET + Al) 50 % Al foil + 50 % polietileno 2 kg 0.02 m³
+- Envoltura reflectiva del arco`,
     en: `1. Entrance arch:
-    - Structural aluminum (> 90%) 100% aluminum 15 kg 0.015 m³
-    - Welded or bolted tubes; reusable Overwrap (PE + PET + Al) 50% Al foil + 50% polyethylene 2 kg 0.02 m³
-    - Reflective arch wrap`
+- Structural aluminum (> 90%) 100% aluminum 15 kg 0.015 m³
+- Welded or bolted tubes; reusable Overwrap (PE + PET + Al) 50% Al foil + 50% polyethylene 2 kg 0.02 m³
+- Reflective arch wrap`
   },
   {
     type: 'label',
     escrito: false,
     color: COLOR_LABEL_ANSWER,
     es: `2. Letras 3D:
-    - Zotek F30 (espuma)
-    - 100 % espuma de polietileno reticulado 5 kg 0.05 m³ Corte CNC y pintura con pigmentos no tóxicos
-    - Plastazote LD45 F 50 % mezclado con Zotek para rigidez 5 kg 0.05 m³
-    - Espuma ignífuga segura interior`,
+- Zotek F30 (espuma)
+- 100 % espuma de polietileno reticulado 5 kg 0.05 m³ Corte CNC y pintura con pigmentos no tóxicos
+- Plastazote LD45 F 50 % mezclado con Zotek para rigidez 5 kg 0.05 m³
+- Espuma ignífuga segura interior`,
     en: `2. 3D Letters:
-    - Zotek F30 (foam)
-    - 100% cross-linked polyethylene foam 5 kg 0.05 m³ CNC cut and painted with non-toxic pigments
-    - Plastazote LD45 F 50% mixed with Zotek for rigidity 5 kg 0.05 m³
-    - Safe fire-retardant foam for indoor use`
+- Zotek F30 (foam)
+- 100% cross-linked polyethylene foam 5 kg 0.05 m³ CNC cut and painted with non-toxic pigments
+- Plastazote LD45 F 50% mixed with Zotek for rigidity 5 kg 0.05 m³
+- Safe fire-retardant foam for indoor use`
+  },
+  {
+    type: 'label',
+    escrito: false,
+    color: COLOR_LABEL_ANSWER,
+    es: `3. Mesa y base de torta
+- Compuesto polímero-fibra de carbono 60 % fibra + 40 % resina 10 kg 0.01 m³
+- Base rígida, ligera Drink Pouch reciclado 65 % PE + 24 % Al + 11 % PET 1 kg 0.01 m³
+- Cobertura metalizada brillante`,
+    en: `3. Table and cake base
+- Polymer-carbon fiber composite 60% fiber + 40% resin 10 kg 0.01 m³
+- Rigid, lightweight base Recycled Drink Pouch 65% PE + 24% Al + 11% PET 1 kg 0.01 m³
+- Shiny metallic coating`
+  },
+  {
+    type: 'label',
+    escrito: false,
+    color: COLOR_LABEL_ANSWER,
+    es: `4. Globos ecológicos (x20)
+- Air cushion / bubble wrap PE 100 % polietileno  1.5 kg 0.015 m³
+- Sellado térmico, inflado con aire filtrado`,
+    en: `4. Eco-friendly balloons (x20)
+- Air cushion / bubble wrap PE 100% polyethylene  1.5 kg 0.015 m³
+- Thermal sealing, inflated with filtered air`
   },
 ];
