@@ -1,20 +1,18 @@
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { DESCRIPCION_MATERIALES_EN, DESCRIPCION_MATERIALES_ES, SIMULAR_MATERIALES_EN, SIMULAR_MATERIALES_ES, TITULO_MATERIALES_EN, TITULO_MATERIALES_ES } from '@/constants/texto';
-import { useLanguage } from '@/context/LanguageContext';
 import { getAllMateriales } from '@/utils/db';
 import { Label } from '@react-navigation/elements';
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   const router = useRouter();
-  const { lang, setLang } = useLanguage();
-  // Formulario movido a Explore
+  const { t, i18n } = useTranslation();
   const [materiales, setMateriales] = useState<any[]>([]);
 
   const cargarMateriales = async (lang: 'es' | 'en') => {
@@ -23,15 +21,16 @@ export default function HomeScreen() {
   };
 
   useEffect(() => {
-    cargarMateriales(lang);
-  }, [lang]);
+    cargarMateriales(i18n.language as 'es' | 'en');
+  }, [i18n.language]);
 
   const simularCrearMaterial = async () => {
     router.push('/(tabs)/simulacion');
-  }
+  };
 
-  const handleChangeLang = (newLang: 'es' | 'en') => {
-    setLang(newLang);
+  const handleChangeLang = () => {
+    const newLang = i18n.language === 'es' ? 'en' : 'es';
+    i18n.changeLanguage(newLang);
   };
 
   return (
@@ -45,7 +44,7 @@ export default function HomeScreen() {
               style={styles.reactLogo}
             />
             <Pressable
-              onPress={() => handleChangeLang(lang === 'es' ? 'en' : 'es')}
+              onPress={handleChangeLang}
               style={{
                 position: 'absolute',
                 bottom: 10,
@@ -62,7 +61,7 @@ export default function HomeScreen() {
               }}
             >
               <ThemedText type="defaultSemiBold" style={{ color: '#000' }}>
-                {lang === 'es' ? 'ESP' : 'ENG'}
+                {i18n.language === 'es' ? 'ESP' : 'ENG'}
               </ThemedText>
             </Pressable>
           </View>
@@ -80,14 +79,14 @@ export default function HomeScreen() {
           >
             <View style={{ backgroundColor: '#f5fff4ff', paddingVertical: 8, paddingHorizontal: 16 }}>
               <ThemedText type="defaultSemiBold" style={{ color: '#000' }}>
-                {lang === 'es' ? SIMULAR_MATERIALES_ES : SIMULAR_MATERIALES_EN}
+                {t('simulation')}
               </ThemedText>
             </View>
           </Pressable>
         </View>
 
         <ThemedView style={styles.titleContainer}>
-          <ThemedText type="title">{lang === 'es' ? TITULO_MATERIALES_ES : TITULO_MATERIALES_EN}</ThemedText>
+          <ThemedText type="title">{t('material')}</ThemedText>
         </ThemedView>
         <Label
           style={{
@@ -98,7 +97,7 @@ export default function HomeScreen() {
           }}
           numberOfLines={0}
         >
-          {lang === 'es' ? DESCRIPCION_MATERIALES_ES : DESCRIPCION_MATERIALES_EN}
+          {t('welcome')}
         </Label>
         <ThemedView style={styles.stepContainer}>
           {materiales.length > 0 && materiales.map((mat) => (

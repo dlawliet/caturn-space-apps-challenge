@@ -1,16 +1,13 @@
 import { ThemedText } from '@/components/themed-text';
 import { PASOS_SIMULACION, VOLVER_EN, VOLVER_ES } from '@/constants/texto';
-import { useLanguage } from '@/context/LanguageContext';
 import { useFocusEffect, useRouter } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
-
-
 export default function SimulacionScreen() {
-  const { lang } = useLanguage();
+  const { t, i18n } = useTranslation();
   const steps = useMemo(() => PASOS_SIMULACION, []);
-
   const [displayed, setDisplayed] = useState<string[]>(Array(steps.length).fill(''));
   const [currentIdx, setCurrentIdx] = useState(0);
   const [waitingButton, setWaitingButton] = useState(false);
@@ -26,7 +23,7 @@ export default function SimulacionScreen() {
   useEffect(() => {
     if (currentIdx < steps.length) {
       const step = steps[currentIdx];
-      const text = step[lang];
+      const text = step[i18n.language as 'es' | 'en'];
       const currentDisplayed = displayed[currentIdx];
       if (step.type === 'label' || step.type === 'input') {
         if (step.escrito) {
@@ -67,13 +64,13 @@ export default function SimulacionScreen() {
         setWaitingButton(true);
       }
     }
-  }, [displayed, currentIdx, lang, steps]);
+  }, [displayed, currentIdx, i18n.language, steps]);
 
   return (
     <ScrollView contentContainerStyle={{ ...styles.container, justifyContent: 'flex-start' }}>
       <View style={{ alignItems: 'flex-start', marginBottom: 10, marginTop: 40, padding: 0, marginLeft: -9 }}>
         <Button
-          title={lang === 'es' ? VOLVER_ES : VOLVER_EN}
+          title={i18n.language === 'es' ? VOLVER_ES : VOLVER_EN}
           onPress={() => router.back()}
           color="#ffca6dff"
         />
@@ -131,7 +128,7 @@ export default function SimulacionScreen() {
                 ]}
               >
                 <ThemedText style={{ color: '#333', fontWeight: 'bold', fontSize: 16 }}>
-                  {step[lang]}
+                  {step[i18n.language as 'es' | 'en']}
                 </ThemedText>
               </Pressable>
             </View>
